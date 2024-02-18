@@ -1,0 +1,13 @@
+#!/bin/sh
+
+PID="$(pidof picom)"
+if [ -n "$PID"  ]; then
+	kill "$PID"
+fi
+
+gamemoderun "$@"
+
+picom &
+disown
+
+exit 0

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+PID="$(pidof picom)"
+if [ -n "$PID"  ]; then
+	kill "$PID"
+	tail --pid="$PID" -f /dev/null
+fi
+
+picom &
+disown
+
+exit 0
